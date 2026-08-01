@@ -1,0 +1,39 @@
+SITIO WEB — GENOVEVA TIAYNA PACHA
+===================================
+
+CONTENIDO
+- index.html: página principal.
+- styles.css: diseño, colores y versión móvil.
+- script.js: menú, animaciones y formulario de WhatsApp.
+- assets/: logo, tarjeta, favicon e imagen para compartir.
+- vista-previa.png: captura referencial del sitio (si está incluida).
+
+CÓMO PUBLICAR
+1. Descomprima el archivo ZIP.
+2. Suba TODO el contenido de la carpeta al directorio público de su alojamiento:
+   normalmente public_html, www o htdocs.
+3. Verifique que index.html quede directamente dentro de ese directorio.
+4. Abra su dominio en el navegador.
+
+NO NECESITA BASE DE DATOS
+El formulario no guarda información. Al enviarlo, abre WhatsApp con el mensaje preparado.
+
+DATOS CONFIGURADOS
+- Nombre: Genoveva Tiayna Pacha
+- Teléfono/WhatsApp: +56 9 7386 7356
+- Correo: trabajadora.socialgtp@gmail.com
+
+ANTES DE PUBLICAR
+- Confirme que el número y correo sean correctos.
+- Agregue número de registro profesional o de mediadora si desea mostrarlo.
+- Puede reemplazar la tarjeta por una fotografía profesional, manteniendo el mismo nombre de archivo:
+  assets/tarjeta-presentacion.webp
+- Si dispone de una dirección fija para atención presencial, puede agregarla en index.html.
+
+COLORES PRINCIPALES
+- Verde profundo: #234735
+- Dorado suave: #C7A76D
+- Rosado cálido: #D48B98
+- Crema: #F8F4EC
+
+El sitio no utiliza librerías externas, por lo que puede funcionar en alojamientos básicos.
