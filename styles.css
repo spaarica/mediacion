@@ -346,3 +346,139 @@ p{margin-top:0}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .reveal{opacity:1;transform:none}
 }
+
+/* ==================================================
+   REDES SOCIALES
+================================================== */
+
+.social-area {
+  margin: 26px 0 24px;
+}
+
+.social-title {
+  margin: 0 0 14px;
+  color: var(--green);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+}
+
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.social-link {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+
+  min-width: 0;
+  padding: 13px 14px;
+
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(35, 71, 53, 0.12);
+  border-radius: 18px;
+
+  box-shadow: 0 10px 24px rgba(35, 71, 53, 0.06);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.social-link:hover,
+.social-link:focus-visible {
+  transform: translateY(-3px);
+  background: #ffffff;
+  border-color: rgba(35, 71, 53, 0.28);
+  box-shadow: 0 16px 32px rgba(35, 71, 53, 0.12);
+}
+
+.social-icon {
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+
+  color: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Esta regla evita que los íconos SVG se agranden */
+.social-icon svg {
+  display: block;
+  width: 23px !important;
+  height: 23px !important;
+  max-width: 23px !important;
+  max-height: 23px !important;
+}
+
+.social-facebook .social-icon {
+  background: var(--green);
+}
+
+.social-tiktok .social-icon {
+  background: var(--rose-deep);
+}
+
+.social-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.social-copy strong {
+  color: var(--green);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.social-copy small {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.3;
+}
+
+.social-arrow {
+  color: var(--gold);
+  font-size: 1.25rem;
+  font-weight: 800;
+  transition: transform 0.2s ease;
+}
+
+.social-link:hover .social-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* Adaptación para celulares */
+@media (max-width: 620px) {
+  .social-links {
+    grid-template-columns: 1fr;
+  }
+
+  .social-link {
+    grid-template-columns: 46px minmax(0, 1fr) auto;
+  }
+
+  .social-icon {
+    width: 46px;
+    height: 46px;
+  }
+
+  .social-icon svg {
+    width: 22px !important;
+    height: 22px !important;
+    max-width: 22px !important;
+    max-height: 22px !important;
+  }
+}
