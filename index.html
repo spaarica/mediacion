@@ -29,6 +29,309 @@
     }
   }
   </script>
+
+  <style>
+    /* ==================================================
+       CALCULADORA UTM
+       Estilos integrados en index.html
+    ================================================== */
+    .utm-section {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 8% 18%, rgba(220, 145, 160, 0.18), transparent 24%),
+        radial-gradient(circle at 92% 82%, rgba(209, 138, 152, 0.16), transparent 24%),
+        linear-gradient(145deg, var(--paper) 0%, var(--cream) 100%);
+    }
+
+    .utm-section::before,
+    .utm-section::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .utm-section::before {
+      width: 240px;
+      height: 240px;
+      top: -120px;
+      right: 8%;
+      border: 1px solid rgba(155, 79, 98, 0.12);
+    }
+
+    .utm-section::after {
+      width: 330px;
+      height: 330px;
+      left: -190px;
+      bottom: -220px;
+      border: 1px solid rgba(155, 79, 98, 0.10);
+    }
+
+    .utm-calculator-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .utm-info-card,
+    .utm-calculator-card {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(255, 250, 248, 0.96);
+      box-shadow: var(--shadow);
+    }
+
+    .utm-info-card {
+      padding: 38px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .utm-info-icon {
+      width: 70px;
+      height: 70px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 24px;
+      border-radius: 22px;
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .utm-info-icon svg {
+      width: 38px;
+      height: 38px;
+    }
+
+    .utm-info-card h2 {
+      margin-bottom: 16px;
+    }
+
+    .utm-info-card > p {
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+
+    .utm-current-box {
+      margin-top: 24px;
+      padding: 20px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-2) 100%);
+      color: #fff;
+    }
+
+    .utm-current-box span,
+    .utm-current-box small {
+      display: block;
+    }
+
+    .utm-current-label {
+      margin-bottom: 7px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+    }
+
+    .utm-current-value {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.1;
+    }
+
+    .utm-current-date {
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.84rem;
+    }
+
+    .utm-source {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .utm-source a {
+      color: var(--rose-deep);
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .utm-calculator-card {
+      padding: 38px;
+    }
+
+    .utm-calculator-card h3 {
+      margin-bottom: 8px;
+      font-size: clamp(1.7rem, 3vw, 2.25rem);
+    }
+
+    .utm-calculator-intro {
+      margin-bottom: 26px;
+      color: var(--muted);
+    }
+
+    .utm-field {
+      display: grid;
+      gap: 9px;
+    }
+
+    .utm-field label {
+      color: var(--green);
+      font-size: 0.90rem;
+      font-weight: 800;
+    }
+
+    .utm-input-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .utm-input-wrap:focus-within {
+      border-color: var(--rose-deep);
+      box-shadow: 0 0 0 4px rgba(166, 79, 98, 0.11);
+    }
+
+    .utm-input-wrap input {
+      width: 100%;
+      min-width: 0;
+      padding: 16px 18px;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--ink);
+      font-size: 1.12rem;
+      font-weight: 700;
+    }
+
+    .utm-input-suffix {
+      padding: 0 18px;
+      color: var(--rose-deep);
+      font-weight: 900;
+    }
+
+    .utm-shortcuts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 22px;
+    }
+
+    .utm-shortcut {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .utm-shortcut:hover,
+    .utm-shortcut:focus-visible {
+      transform: translateY(-2px);
+      background: var(--rose-soft);
+    }
+
+    .utm-calculate-button {
+      width: 100%;
+      border: 0;
+    }
+
+    .utm-result {
+      margin-top: 24px;
+      padding: 24px;
+      border: 1px solid rgba(155, 79, 98, 0.14);
+      border-radius: 22px;
+      background: linear-gradient(145deg, #fff 0%, var(--rose-soft) 145%);
+    }
+
+    .utm-result-label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.10em;
+    }
+
+    .utm-result-value {
+      display: block;
+      color: var(--green);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.1;
+      word-break: break-word;
+    }
+
+    .utm-result-detail {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .utm-status {
+      min-height: 24px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .utm-status.is-error {
+      color: #9a3345;
+      font-weight: 700;
+    }
+
+    .utm-disclaimer {
+      margin: 18px 0 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .utm-calculator-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .utm-info-card,
+      .utm-calculator-card {
+        padding: 26px 22px;
+        border-radius: 22px;
+      }
+
+      .utm-shortcuts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .utm-shortcut {
+        width: 100%;
+      }
+    }
+  </style>
+
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -53,6 +356,7 @@
         <a href="#modalidades">Modalidades</a>
         <a href="#sobre-mi">Sobre mí</a>
         <a href="#preguntas">Preguntas</a>
+        <a href="#calcula-utm">Calcula tu UTM</a>
         <a class="nav-cta" href="#contacto">Solicitar orientación</a>
       </nav>
     </div>
@@ -62,7 +366,7 @@
     <section class="hero section">
       <div class="container hero-grid">
         <div class="hero-copy reveal">
-          <p class="eyebrow">Mediación familiar presencial y remota</p>
+          <p class="eyebrow">Mediación familiar presencial, remota y a domicilio</p>
          <!-- <h1>Cuando conversar se vuelve difícil, la mediación puede abrir un nuevo camino.</h1> -->
           <h2>Mediación Familiar: un nuevo camino para conversar.</h2>
 
@@ -76,7 +380,7 @@
           <div class="trust-list" aria-label="Características del servicio">
             <span>Atención cercana</span>
             <span>Diálogo respetuoso</span>
-            <span>Presencial o videollamada</span>
+            <span>Presencial, Oficina o videollamada</span>
           </div>
         </div>
 
@@ -149,7 +453,7 @@
 
   <div class="floating-note note-two">
     <strong>Acuerdos propios</strong>
-    <span>Las decisiones las construyen las personas.</span>
+    <span>Las decisiones las construyen las partes.</span>
   </div>
 </div>
 
@@ -463,6 +767,91 @@
       </div>
     </section>
 
+
+    <section class="section utm-section" id="calcula-utm">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Conversión referencial</p>
+          <h2>Calcula tu UTM en pesos chilenos</h2>
+          <p>Ingresa una cantidad de UTM y conoce inmediatamente su equivalencia aproximada en pesos chilenos según el valor mensual disponible.</p>
+        </div>
+
+        <div class="utm-calculator-grid">
+          <article class="utm-info-card reveal">
+            <div class="utm-info-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 6.5h16M6 3.5h12a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-13a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M8 10h3M8 14h3M8 18h3M15 10h1M15 14h1M15 18h1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <p class="eyebrow">Valor mensual</p>
+            <h2>UTM vigente</h2>
+            <p>La Unidad Tributaria Mensual cambia periódicamente. La calculadora intenta obtener automáticamente el último valor disponible.</p>
+
+            <div class="utm-current-box">
+              <span class="utm-current-label">Valor utilizado</span>
+              <strong class="utm-current-value" id="utm-current-value">Cargando…</strong>
+              <small class="utm-current-date" id="utm-current-date">Consultando el valor actualizado</small>
+            </div>
+
+            <p class="utm-source">
+              Actualización automática mediante mindicador.cl.
+              <a href="https://www.sii.cl/valores_y_fechas/index_valores_y_fechas.html" target="_blank" rel="noopener noreferrer">Consultar valores oficiales del SII</a>.
+            </p>
+          </article>
+
+          <article class="utm-calculator-card reveal">
+            <p class="eyebrow">Calculadora</p>
+            <h3>¿Cuántas UTM deseas convertir?</h3>
+            <p class="utm-calculator-intro">Puedes ingresar números enteros o decimales. Por ejemplo: 1,5 UTM.</p>
+
+            <div class="utm-field">
+              <label for="utm-amount">Cantidad de UTM</label>
+              <div class="utm-input-wrap">
+                <input
+                  id="utm-amount"
+                  type="text"
+                  inputmode="decimal"
+                  autocomplete="off"
+                  value="1"
+                  placeholder="Ej.: 1,5"
+                  aria-describedby="utm-status"
+                >
+                <span class="utm-input-suffix">UTM</span>
+              </div>
+            </div>
+
+            <div class="utm-shortcuts" aria-label="Cantidades rápidas">
+              <button class="utm-shortcut" type="button" data-utm-amount="0.5">0,5</button>
+              <button class="utm-shortcut" type="button" data-utm-amount="1">1</button>
+              <button class="utm-shortcut" type="button" data-utm-amount="2">2</button>
+              <button class="utm-shortcut" type="button" data-utm-amount="5">5</button>
+              <button class="utm-shortcut" type="button" data-utm-amount="10">10</button>
+            </div>
+
+            <button class="button primary utm-calculate-button" id="utm-calculate" type="button">
+              Calcular en pesos chilenos
+            </button>
+
+            <div class="utm-result" aria-live="polite">
+              <span class="utm-result-label">Resultado aproximado</span>
+              <strong class="utm-result-value" id="utm-result-value">—</strong>
+              <span class="utm-result-detail" id="utm-result-detail">Ingresa una cantidad para calcular.</span>
+            </div>
+
+            <p class="utm-status" id="utm-status" role="status" aria-live="polite">
+              Obteniendo el valor mensual de la UTM…
+            </p>
+
+            <p class="utm-disclaimer">
+              Esta herramienta entrega una conversión matemática referencial y no reemplaza la información oficial ni una liquidación legal, tributaria o judicial.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section contact-section" id="contacto">
       <div class="container contact-grid">
         <div class="contact-copy reveal">
@@ -606,6 +995,7 @@
         <a href="#mediacion">Qué es la mediación</a>
         <a href="#modalidades">Modalidades</a>
         <a href="#preguntas">Preguntas frecuentes</a>
+        <a href="#calcula-utm">Calcula tu UTM</a>
         <a href="#contacto">Contacto</a>
       </div>
 
@@ -621,5 +1011,167 @@
   </a>
 
   <script src="script.js"></script>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var API_URL = "https://mindicador.cl/api/utm";
+      var FALLBACK_VALUE = 71649;
+      var FALLBACK_DATE = "2026-08-01T04:00:00.000Z";
+
+      var currentValueElement = document.getElementById("utm-current-value");
+      var currentDateElement = document.getElementById("utm-current-date");
+      var amountInput = document.getElementById("utm-amount");
+      var calculateButton = document.getElementById("utm-calculate");
+      var resultValueElement = document.getElementById("utm-result-value");
+      var resultDetailElement = document.getElementById("utm-result-detail");
+      var statusElement = document.getElementById("utm-status");
+      var shortcutButtons = document.querySelectorAll(".utm-shortcut");
+
+      if (!currentValueElement || !amountInput || !calculateButton) {
+        return;
+      }
+
+      var utmValue = null;
+      var utmDate = null;
+      var usingFallback = false;
+
+      var currencyFormatter = new Intl.NumberFormat("es-CL", {
+        style: "currency",
+        currency: "CLP",
+        maximumFractionDigits: 0
+      });
+
+      var numberFormatter = new Intl.NumberFormat("es-CL", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 4
+      });
+
+      var monthFormatter = new Intl.DateTimeFormat("es-CL", {
+        month: "long",
+        year: "numeric",
+        timeZone: "America/Santiago"
+      });
+
+      function parseAmount(rawValue) {
+        var normalized = String(rawValue || "").trim().replace(/\s+/g, "");
+
+        if (normalized.indexOf(",") !== -1 && normalized.indexOf(".") !== -1) {
+          if (normalized.lastIndexOf(",") > normalized.lastIndexOf(".")) {
+            normalized = normalized.replace(/\./g, "").replace(",", ".");
+          } else {
+            normalized = normalized.replace(/,/g, "");
+          }
+        } else {
+          normalized = normalized.replace(",", ".");
+        }
+
+        var amount = Number(normalized);
+        return Number.isFinite(amount) ? amount : NaN;
+      }
+
+      function showCurrentValue() {
+        currentValueElement.textContent = "1 UTM = " + currencyFormatter.format(utmValue);
+
+        var formattedDate = monthFormatter.format(new Date(utmDate));
+        currentDateElement.textContent = usingFallback
+          ? "Valor de respaldo correspondiente a " + formattedDate
+          : "Último valor disponible: " + formattedDate;
+      }
+
+      function calculate() {
+        if (!utmValue) {
+          statusElement.textContent = "Aún se está obteniendo el valor de la UTM.";
+          return;
+        }
+
+        var amount = parseAmount(amountInput.value);
+
+        if (!Number.isFinite(amount) || amount < 0) {
+          resultValueElement.textContent = "—";
+          resultDetailElement.textContent = "Ingresa una cantidad válida y mayor o igual a cero.";
+          statusElement.textContent = "Revisa la cantidad ingresada.";
+          statusElement.classList.add("is-error");
+          return;
+        }
+
+        statusElement.classList.remove("is-error");
+
+        var result = amount * utmValue;
+        resultValueElement.textContent = currencyFormatter.format(result);
+        resultDetailElement.textContent =
+          numberFormatter.format(amount) +
+          " UTM × " +
+          currencyFormatter.format(utmValue) +
+          " por UTM";
+
+        statusElement.textContent = usingFallback
+          ? "Cálculo realizado con el valor de respaldo indicado."
+          : "Cálculo realizado con el último valor obtenido automáticamente.";
+      }
+
+      function useFallback() {
+        utmValue = FALLBACK_VALUE;
+        utmDate = FALLBACK_DATE;
+        usingFallback = true;
+        showCurrentValue();
+        statusElement.textContent =
+          "No se pudo consultar el servicio en este momento. Se utiliza un valor de respaldo visible en pantalla.";
+        statusElement.classList.add("is-error");
+        calculate();
+      }
+
+      function loadUtm() {
+        fetch(API_URL, { cache: "no-store" })
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error("Respuesta no válida");
+            }
+            return response.json();
+          })
+          .then(function (data) {
+            if (!data || !data.serie || !data.serie.length || !data.serie[0].valor) {
+              throw new Error("Datos incompletos");
+            }
+
+            utmValue = Number(data.serie[0].valor);
+            utmDate = data.serie[0].fecha;
+            usingFallback = false;
+
+            showCurrentValue();
+            statusElement.classList.remove("is-error");
+            statusElement.textContent = "Valor actualizado correctamente.";
+            calculate();
+          })
+          .catch(useFallback);
+      }
+
+      calculateButton.addEventListener("click", calculate);
+
+      amountInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          calculate();
+        }
+      });
+
+      amountInput.addEventListener("input", function () {
+        if (utmValue) {
+          calculate();
+        }
+      });
+
+      Array.prototype.forEach.call(shortcutButtons, function (button) {
+        button.addEventListener("click", function () {
+          amountInput.value = button.getAttribute("data-utm-amount") || "1";
+          calculate();
+        });
+      });
+
+      loadUtm();
+    })();
+  </script>
+
 </body>
 </html>
