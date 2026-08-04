@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mediación Familiar</title>
   <meta name="description" content="Servicios de mediación familiar presencial y remota con Genoveva Tiayna Pacha, Trabajadora Social, Mediadora Familiar y Perito Social.">
-  <meta name="theme-color" content="#234735">
+  <meta name="theme-color" content="#9b4f62">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Genoveva Tiayna Pacha | Mediación Familiar">
   <meta property="og:description" content="Un espacio profesional y respetuoso para conversar, comprender necesidades y buscar acuerdos familiares.">
@@ -332,6 +332,330 @@
     }
   </style>
 
+
+  <style>
+    /* ==================================================
+       ALIMENTOS, DERECHOS Y FILIACIÓN
+       Estilos integrados en index.html
+    ================================================== */
+
+    .family-law-section {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(220, 145, 160, 0.17), transparent 23%),
+        radial-gradient(circle at 6% 88%, rgba(209, 138, 152, 0.13), transparent 24%),
+        linear-gradient(180deg, #fffaf8 0%, #fdf3ef 100%);
+    }
+
+    .family-law-section::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      top: -230px;
+      right: -120px;
+      border: 1px solid rgba(155, 79, 98, 0.12);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .family-law-intro {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto 36px;
+      padding: 28px 30px;
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--rose);
+      border-radius: 24px;
+      background: rgba(255, 250, 248, 0.95);
+      box-shadow: 0 16px 38px rgba(155, 79, 98, 0.10);
+    }
+
+    .family-law-intro p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .family-law-intro strong {
+      color: var(--green);
+    }
+
+    .family-law-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .family-law-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 250, 248, 0.97);
+      box-shadow: 0 14px 34px rgba(155, 79, 98, 0.08);
+    }
+
+    .family-law-card.featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
+      background:
+        linear-gradient(135deg, rgba(244, 221, 226, 0.90), rgba(255, 250, 248, 0.98));
+    }
+
+    .family-law-icon {
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 20px;
+      border-radius: 19px;
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .family-law-card.featured .family-law-icon {
+      width: 76px;
+      height: 76px;
+      margin: 0;
+      border-radius: 22px;
+      background: var(--green);
+      color: #fff;
+    }
+
+    .family-law-icon svg {
+      width: 34px;
+      height: 34px;
+    }
+
+    .family-law-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .family-law-card p,
+    .family-law-card li {
+      color: var(--muted);
+    }
+
+    .family-law-card ul,
+    .family-law-card ol {
+      margin: 16px 0 0;
+      padding-left: 21px;
+    }
+
+    .family-law-card li + li {
+      margin-top: 9px;
+    }
+
+    .family-law-card .law-highlight {
+      margin-top: 18px;
+      padding: 15px 17px;
+      border-radius: 16px;
+      background: var(--cream);
+      color: var(--green);
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .family-law-card .law-small {
+      margin-top: 14px;
+      font-size: 0.84rem;
+      line-height: 1.55;
+    }
+
+    .family-law-process {
+      position: relative;
+      z-index: 1;
+      margin-top: 24px;
+      padding: 30px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-2) 100%);
+      color: #fff;
+      box-shadow: 0 18px 42px rgba(126, 57, 74, 0.22);
+    }
+
+    .family-law-process h3,
+    .family-law-process p {
+      color: #fff;
+    }
+
+    .family-law-process h3 {
+      margin-bottom: 18px;
+    }
+
+    .family-law-steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .family-law-step {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+    }
+
+    .family-law-step strong {
+      display: block;
+      margin-bottom: 7px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.03rem;
+    }
+
+    .family-law-step span {
+      display: block;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.85rem;
+      line-height: 1.45;
+    }
+
+    .family-law-utm-note {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      margin-top: 24px;
+      padding: 24px 26px;
+      border: 1px solid rgba(155, 79, 98, 0.16);
+      border-radius: 22px;
+      background: #fff;
+    }
+
+    .family-law-utm-note h3 {
+      margin-bottom: 7px;
+      font-size: 1.35rem;
+    }
+
+    .family-law-utm-note p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .family-law-sources {
+      position: relative;
+      z-index: 1;
+      margin-top: 28px;
+      padding: 24px 26px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255, 250, 248, 0.92);
+    }
+
+    .family-law-sources h3 {
+      margin-bottom: 15px;
+      font-size: 1.25rem;
+    }
+
+    .family-law-source-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .family-law-source-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 42px;
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 0.82rem;
+      font-weight: 800;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .family-law-source-links a:hover,
+    .family-law-source-links a:focus-visible {
+      transform: translateY(-2px);
+      background: var(--rose-soft);
+    }
+
+    .family-law-disclaimer {
+      position: relative;
+      z-index: 1;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 0.79rem;
+      line-height: 1.55;
+      text-align: center;
+    }
+
+    @media (min-width: 1051px) and (max-width: 1320px) {
+      .main-nav {
+        gap: 15px;
+        font-size: 0.84rem;
+      }
+
+      .nav-cta {
+        padding-inline: 14px;
+      }
+
+      .brand small {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .family-law-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .family-law-card.featured {
+        grid-column: auto;
+      }
+
+      .family-law-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .family-law-utm-note {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .family-law-intro,
+      .family-law-card,
+      .family-law-process,
+      .family-law-sources {
+        padding: 23px 20px;
+        border-radius: 21px;
+      }
+
+      .family-law-card.featured {
+        grid-template-columns: 1fr;
+      }
+
+      .family-law-card.featured .family-law-icon {
+        width: 62px;
+        height: 62px;
+      }
+
+      .family-law-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .family-law-utm-note {
+        padding: 22px 20px;
+      }
+
+      .family-law-utm-note .button {
+        width: 100%;
+      }
+    }
+  </style>
+
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -353,6 +677,7 @@
       <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
         <a href="#mediacion">Qué es</a>
         <a href="#materias">En qué ayuda</a>
+        <a href="#alimentos-filiacion">Alimentos y filiación</a>
         <a href="#modalidades">Modalidades</a>
         <a href="#sobre-mi">Sobre mí</a>
         <a href="#preguntas">Preguntas</a>
@@ -545,7 +870,7 @@
                 <path d="M50 39v22M43 44c4-5 15-4 15 2 0 7-15 3-15 10 0 6 11 7 16 2" fill="none" stroke="#8b5b62" stroke-width="3" stroke-linecap="round"/>
               </svg>
             </div>
-            <h3>Alimentos</h3>
+            <h3>Pensión de alimentos</h3>
             <p>Permite conversar sobre las necesidades de hijos e hijas y la forma en que ambos padres contribuirán a su cuidado.</p>
           </article>
 
@@ -557,7 +882,7 @@
                 <path d="m35 57 9 9 21-22" fill="none" stroke="#c7a76d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <h3>Cuidado Personal</h3>
+            <h3>Cuidado personal</h3>
             <p>Ayuda a organizar responsabilidades, rutinas y decisiones relacionadas con el cuidado cotidiano de hijos e hijas.</p>
           </article>
 
@@ -571,7 +896,7 @@
                 <path d="M38 80c1-12 5-19 12-19s11 7 12 19" fill="none" stroke="#8b5b62" stroke-width="5" stroke-linecap="round"/>
               </svg>
             </div>
-            <h3>Relación Directa y Regular</h3>
+            <h3>Relación directa y regular</h3>
             <p>Facilita la organización del contacto, los tiempos compartidos y otras condiciones importantes para los hijos.</p>
           </article>
 
@@ -584,7 +909,7 @@
                 <path d="m70 68 6 6 11-13" fill="none" stroke="#8b5b62" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <h3>Orientación Familiar</h3>
+            <h3>Comunicación y organización</h3>
             <p>Puede ayudar cuando existen conversaciones difíciles, decisiones pendientes o responsabilidades poco claras.</p>
           </article>
         </div>
@@ -767,6 +1092,190 @@
       </div>
     </section>
 
+
+
+    <section class="section family-law-section" id="alimentos-filiacion">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Información familiar en lenguaje claro</p>
+          <h2>Alimentos, derechos de niños y filiación</h2>
+          <p>Una explicación general sobre el derecho de alimentos, la forma en que se fija una pensión y las principales normas relacionadas con filiación y matrimonio.</p>
+        </div>
+
+        <div class="family-law-intro reveal">
+          <p>
+            <strong>La pensión de alimentos es un derecho del niño, niña o adolescente.</strong>
+            No corresponde entenderla como un pago para el padre o la madre que ejerce el cuidado, sino como una contribución destinada a cubrir las necesidades y favorecer el desarrollo integral de quien recibe los alimentos.
+          </p>
+        </div>
+
+        <div class="family-law-grid">
+          <article class="family-law-card reveal">
+            <div class="family-law-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 21s8-4.5 8-11V5l-8-3-8 3v5c0 6.5 8 11 8 11Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M8.5 11.5 11 14l4.7-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>El niño es sujeto de derechos</h3>
+            <p>Las decisiones deben considerar como prioridad su interés superior, bienestar y desarrollo. Ambos padres mantienen deberes respecto de sus hijos, aunque vivan separados.</p>
+            <div class="law-highlight">La obligación de cuidado y manutención no desaparece por el término de la relación de pareja.</div>
+          </article>
+
+          <article class="family-law-card reveal">
+            <div class="family-law-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 20h16M6 20V9l6-5 6 5v11M9 14h6M9 17h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>¿Qué comprenden los alimentos?</h3>
+            <p>El concepto legal es más amplio que la alimentación. Puede comprender, según las necesidades del caso:</p>
+            <ul>
+              <li>Alimentación, vivienda y vestuario.</li>
+              <li>Salud, medicamentos y tratamientos.</li>
+              <li>Educación, materiales y transporte.</li>
+              <li>Recreación y otras necesidades de desarrollo.</li>
+            </ul>
+          </article>
+
+          <article class="family-law-card reveal">
+            <div class="family-law-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 19h16M7 16V8M12 16V5M17 16v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="m5 8 5-4 4 3 5-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>¿Cómo se determina la pensión mensual?</h3>
+            <p>No existe una cifra idéntica para todas las familias. Al fijarla se analizan principalmente:</p>
+            <ol>
+              <li>Las necesidades ordinarias y extraordinarias del hijo.</li>
+              <li>Los ingresos, patrimonio y capacidad económica de ambos padres.</li>
+              <li>La contribución que corresponde a cada uno según sus facultades.</li>
+              <li>Las circunstancias familiares acreditadas en el caso concreto.</li>
+            </ol>
+          </article>
+
+          <article class="family-law-card reveal">
+            <div class="family-law-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M5 4h14v16H5zM8 8h8M8 12h3M14 12h2M8 16h3M14 16h2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Mínimos y límite general</h3>
+            <p>Cuando un menor solicita alimentos a su padre o madre, la ley presume que el alimentante tiene medios para otorgarlos.</p>
+            <ul>
+              <li><strong>Un menor:</strong> el mínimo legal es, como regla, el 40% del ingreso mínimo remuneracional.</li>
+              <li><strong>Dos o más menores:</strong> el mínimo es, como regla, el 30% por cada uno.</li>
+              <li>El juez puede rebajar ese mínimo si se acredita falta de medios.</li>
+              <li>Como regla general, la pensión no debe exceder el 50% de las rentas del alimentante, salvo razones fundadas.</li>
+            </ul>
+            <p class="law-small">El mínimo se relaciona con el ingreso mínimo remuneracional; no se calcula directamente multiplicando UTM.</p>
+          </article>
+
+          <article class="family-law-card reveal">
+            <div class="family-law-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M5 5h14v14H5zM8 9h8M8 13h8M8 17h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>¿Hasta cuándo se pagan alimentos?</h3>
+            <p>En términos generales, los alimentos para descendientes se devengan hasta los 21 años. Si estudian una profesión u oficio, pueden extenderse hasta los 28 años.</p>
+            <p>También pueden continuar cuando existe una incapacidad física o mental que impida subsistir por sí mismo, o cuando el tribunal los considere indispensables por circunstancias calificadas.</p>
+          </article>
+
+          <article class="family-law-card reveal">
+            <div class="family-law-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 3h12v18H6zM9 7h6M9 11h6M9 15h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="16.5" cy="16.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
+            </div>
+            <h3>Ley Nº 21.389</h3>
+            <p>Esta ley fortaleció el cumplimiento de las pensiones y creó el Registro Nacional de Deudores de Pensiones de Alimentos.</p>
+            <ul>
+              <li>La pensión fijada o aprobada debe expresarse en UTM.</li>
+              <li>Los tribunales practican liquidaciones periódicas de la deuda.</li>
+              <li>La inscripción procede cuando se adeudan total o parcialmente tres cuotas consecutivas o cinco discontinuas.</li>
+              <li>La inscripción puede generar retenciones y restricciones en distintos trámites y operaciones.</li>
+            </ul>
+          </article>
+
+          <article class="family-law-card featured reveal">
+            <div class="family-law-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="8" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                <circle cx="16" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M3 20c.5-4 2.2-6 5-6s4.5 2 5 6M11 20c.5-4 2.2-6 5-6s4.5 2 5 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Ley Nº 19.585: filiación, no “afiliación”</h3>
+              <p>La Ley Nº 19.585 reformó el Código Civil en materia de filiación. Regula cómo se determina legalmente la maternidad y la paternidad, tanto en filiación matrimonial como no matrimonial, mediante reconocimiento o sentencia judicial.</p>
+              <p>La filiación legalmente determinada produce derechos y deberes entre padres e hijos, entre ellos el cuidado, la educación, la relación directa y regular y el derecho a solicitar alimentos.</p>
+            </div>
+          </article>
+
+          <article class="family-law-card featured reveal">
+            <div class="family-law-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M7.5 12.5 12 17l4.5-4.5M4 9.5C4 6.5 6 4 9 4c1.6 0 2.7.7 3 1.6C12.3 4.7 13.4 4 15 4c3 0 5 2.5 5 5.5 0 4.5-5.2 8.4-8 10.5-2.8-2.1-8-6-8-10.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <h3>Artículo 102 del Código Civil y matrimonio</h3>
+              <p>La definición vigente del matrimonio en el artículo 102 utiliza la expresión “dos personas”. Esta modificación no proviene de la Ley Nº 19.585, sino de la Ley Nº 21.400 sobre matrimonio igualitario.</p>
+              <p>La Ley Nº 19.585 debe presentarse en la web dentro del tema de filiación. La definición actual del matrimonio debe explicarse por separado, vinculada a la Ley Nº 21.400 y a la Ley de Matrimonio Civil Nº 19.947.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="family-law-process reveal">
+          <h3>¿Cómo se inicia la regulación de alimentos?</h3>
+          <div class="family-law-steps">
+            <div class="family-law-step">
+              <strong>1. Reunir antecedentes</strong>
+              <span>Gastos del hijo, ingresos, salud, educación y otros documentos relevantes.</span>
+            </div>
+            <div class="family-law-step">
+              <strong>2. Mediación previa</strong>
+              <span>En alimentos, generalmente debe intentarse mediación antes de presentar una demanda.</span>
+            </div>
+            <div class="family-law-step">
+              <strong>3. Acuerdo o certificado</strong>
+              <span>Si existe acuerdo, se envía al tribunal para su aprobación. Si no, se emite mediación frustrada.</span>
+            </div>
+            <div class="family-law-step">
+              <strong>4. Tribunal de Familia</strong>
+              <span>El tribunal puede fijar alimentos provisorios y luego resolver el monto definitivo.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="family-law-utm-note reveal">
+          <div>
+            <h3>La UTM permite mantener actualizado el monto</h3>
+            <p>La Ley Nº 21.389 exige que la pensión fijada o aprobada se exprese en UTM. La calculadora de esta página sirve para convertir ese monto a pesos, pero no determina por sí sola cuánto corresponde pagar.</p>
+          </div>
+          <a class="button primary" href="#calcula-utm">Ir a la calculadora UTM</a>
+        </div>
+
+        <div class="family-law-sources reveal">
+          <h3>Fuentes oficiales para ampliar la información</h3>
+          <div class="family-law-source-links">
+            <a href="https://www.bcn.cl/leychile/navegar?idNorma=172986" target="_blank" rel="noopener noreferrer">Código Civil</a>
+            <a href="https://www.bcn.cl/leychile/navegar?idNorma=1168463" target="_blank" rel="noopener noreferrer">Ley Nº 21.389</a>
+            <a href="https://www.bcn.cl/leychile/navegar?idNorma=126366" target="_blank" rel="noopener noreferrer">Ley Nº 19.585</a>
+            <a href="https://www.bcn.cl/leychile/navegar?idNorma=1169572" target="_blank" rel="noopener noreferrer">Ley Nº 21.400</a>
+            <a href="https://www.bcn.cl/leychile/navegar?idNorma=1173643" target="_blank" rel="noopener noreferrer">Ley Nº 21.430</a>
+            <a href="https://www.chileatiende.gob.cl/fichas/313-asesoria-juridica-gratuita-y-presentacion-judicial-para-obtener-pension-de-alimentos" target="_blank" rel="noopener noreferrer">ChileAtiende: pensión de alimentos</a>
+          </div>
+        </div>
+
+        <p class="family-law-disclaimer">
+          Este contenido es informativo y utiliza lenguaje general. No reemplaza la revisión de los antecedentes particulares ni la orientación jurídica de un profesional habilitado.
+        </p>
+      </div>
+    </section>
 
     <section class="section utm-section" id="calcula-utm">
       <div class="container">
@@ -994,6 +1503,7 @@
       <div class="footer-links">
         <a href="#mediacion">Qué es la mediación</a>
         <a href="#modalidades">Modalidades</a>
+        <a href="#alimentos-filiacion">Alimentos y filiación</a>
         <a href="#preguntas">Preguntas frecuentes</a>
         <a href="#calcula-utm">Calcula tu UTM</a>
         <a href="#contacto">Contacto</a>
