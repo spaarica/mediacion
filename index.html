@@ -12,7 +12,7 @@
   <meta property="og:image" content="assets/vista-previa-social.jpg">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <!--  <link rel="stylesheet" href="styles.css?v=3"> -->
-    <link rel="stylesheet" href="styles_rosa_genoveva.css?v=11">
+    <link rel="stylesheet" href="styles_rosa_genoveva.css?v=12">
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -656,6 +656,190 @@
     }
   </style>
 
+
+  <style>
+    /* Corrección autónoma de la franja de servicios */
+    .professional-services-strip {
+      padding: 22px 0 24px !important;
+      background: linear-gradient(110deg, #7e394a 0%, #9b4f62 52%, #c7788b 100%) !important;
+      color: #ffffff !important;
+    }
+
+    .professional-services-strip .professional-strip-heading {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 20px !important;
+      margin: 0 0 16px !important;
+      padding: 0 !important;
+    }
+
+    .professional-services-strip .professional-strip-heading > div {
+      display: flex !important;
+      flex-direction: column !important;
+      min-width: 0 !important;
+    }
+
+    .professional-services-strip .professional-strip-heading strong {
+      display: block !important;
+      color: #ffffff !important;
+      font-family: Georgia, "Times New Roman", serif !important;
+      font-size: 1.22rem !important;
+      line-height: 1.2 !important;
+    }
+
+    .professional-services-strip .professional-strip-heading div > span {
+      display: block !important;
+      margin-top: 4px !important;
+      color: rgba(255,255,255,.85) !important;
+      font-size: .82rem !important;
+      line-height: 1.35 !important;
+    }
+
+    .professional-services-strip .professional-strip-label {
+      display: inline-flex !important;
+      flex: 0 0 auto !important;
+      align-items: center !important;
+      min-height: 34px !important;
+      padding: 7px 13px !important;
+      border: 1px solid rgba(255,255,255,.22) !important;
+      border-radius: 999px !important;
+      background: rgba(255,255,255,.12) !important;
+      color: #ffffff !important;
+      font-size: .72rem !important;
+      font-weight: 800 !important;
+      letter-spacing: .08em !important;
+      line-height: 1 !important;
+      text-transform: uppercase !important;
+      white-space: nowrap !important;
+    }
+
+    .professional-services-strip .professional-services-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 14px !important;
+      align-items: stretch !important;
+      width: 100% !important;
+    }
+
+    .professional-services-strip .professional-service-card {
+      display: grid !important;
+      grid-template-columns: 48px minmax(0, 1fr) !important;
+      align-items: center !important;
+      gap: 13px !important;
+      min-width: 0 !important;
+      min-height: 92px !important;
+      margin: 0 !important;
+      padding: 15px 16px !important;
+      border: 1px solid rgba(255,255,255,.18) !important;
+      border-radius: 17px !important;
+      background: rgba(255,255,255,.10) !important;
+      box-shadow: none !important;
+    }
+
+    .professional-services-strip .professional-service-icon {
+      display: grid !important;
+      place-items: center !important;
+      width: 48px !important;
+      height: 48px !important;
+      min-width: 48px !important;
+      max-width: 48px !important;
+      min-height: 48px !important;
+      max-height: 48px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      overflow: hidden !important;
+      border-radius: 15px !important;
+      background: rgba(255,255,255,.16) !important;
+      color: #ffffff !important;
+    }
+
+    .professional-services-strip .professional-service-icon svg {
+      display: block !important;
+      width: 26px !important;
+      height: 26px !important;
+      min-width: 26px !important;
+      max-width: 26px !important;
+      min-height: 26px !important;
+      max-height: 26px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      color: #ffffff !important;
+    }
+
+    .professional-services-strip .professional-service-text {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      min-width: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .professional-services-strip .professional-service-text strong {
+      display: block !important;
+      margin: 0 !important;
+      color: #ffffff !important;
+      font-family: Georgia, "Times New Roman", serif !important;
+      font-size: 1rem !important;
+      line-height: 1.22 !important;
+    }
+
+    .professional-services-strip .professional-service-text small {
+      display: block !important;
+      margin: 5px 0 0 !important;
+      color: rgba(255,255,255,.84) !important;
+      font-size: .77rem !important;
+      line-height: 1.38 !important;
+    }
+
+    @media (max-width: 980px) {
+      .professional-services-strip .professional-services-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .professional-services-strip .professional-service-card {
+        min-height: 80px !important;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .professional-services-strip {
+        padding: 19px 0 21px !important;
+      }
+
+      .professional-services-strip .professional-strip-heading {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+      }
+
+      .professional-services-strip .professional-service-card {
+        grid-template-columns: 44px minmax(0, 1fr) !important;
+        padding: 14px !important;
+      }
+
+      .professional-services-strip .professional-service-icon {
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+        max-width: 44px !important;
+        min-height: 44px !important;
+        max-height: 44px !important;
+      }
+
+      .professional-services-strip .professional-service-icon svg {
+        width: 24px !important;
+        height: 24px !important;
+        min-width: 24px !important;
+        max-width: 24px !important;
+        min-height: 24px !important;
+        max-height: 24px !important;
+      }
+    }
+  </style>
+
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -789,54 +973,54 @@
         </div>
       </div>
     </section>
-<section class="intro-strip" aria-label="Identificación y servicios profesionales">
+<section class="intro-strip professional-services-strip" aria-label="Identificación y servicios profesionales">
       <div class="container">
 
-        <div class="intro-professional">
-          <div class="intro-professional-name">
+        <div class="professional-strip-heading">
+          <div>
             <strong>Genoveva Tiayna Pacha</strong>
             <span>Trabajadora Social · Licenciada en Trabajo Social</span>
           </div>
-          <span class="intro-professional-tag">Servicios profesionales</span>
+          <span class="professional-strip-label">Servicios profesionales</span>
         </div>
 
-        <div class="intro-strip-grid">
-          <article class="intro-service">
-            <span class="intro-service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
+        <div class="professional-services-grid">
+          <article class="professional-service-card">
+            <span class="professional-service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26">
                 <path d="M6 4h12v16H6zM9 8h6M9 12h6M9 16h4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M16.5 14.5 20 18l-2 2-3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </span>
-            <span class="intro-service-content">
+            <span class="professional-service-text">
               <strong>Peritaje Social</strong>
-              <small>Informes y evaluaciones en materias penales y familiares</small>
+              <small>Informes y evaluaciones en materias penales y familiares.</small>
             </span>
           </article>
 
-          <article class="intro-service">
-            <span class="intro-service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
+          <article class="professional-service-card">
+            <span class="professional-service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26">
                 <path d="M4 7.5 12 4l8 3.5-8 3.5-8-3.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
                 <path d="M7 10v5c2.7 2.2 7.3 2.2 10 0v-5M20 8v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
               </svg>
             </span>
-            <span class="intro-service-content">
+            <span class="professional-service-text">
               <strong>Docencia y guía de tesis</strong>
-              <small>Orientación académica y acompañamiento metodológico</small>
+              <small>Orientación académica y acompañamiento metodológico.</small>
             </span>
           </article>
 
-          <article class="intro-service">
-            <span class="intro-service-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
+          <article class="professional-service-card">
+            <span class="professional-service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="26" height="26">
                 <path d="M5 5h14v10H9l-4 4V5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
                 <path d="M8 9h8M8 12h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
               </svg>
             </span>
-            <span class="intro-service-content">
+            <span class="professional-service-text">
               <strong>Mediación Familiar</strong>
-              <small>Atención presencial, remota y a domicilio</small>
+              <small>Atención presencial, remota y a domicilio.</small>
             </span>
           </article>
         </div>
