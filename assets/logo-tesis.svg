@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" role="img" aria-labelledby="title desc">
+<title id="title">Logo de apoyo a proyectos de tesis</title>
+<desc id="desc">Birrete y libro abierto en tonos azul marino, verde salvia y dorado.</desc>
+<circle cx="150" cy="150" r="138" fill="#fbfaf7" stroke="#173453" stroke-width="8"/>
+<circle cx="150" cy="150" r="116" fill="#eef2ec" stroke="#a5b9a2" stroke-width="4"/>
+<path d="M65 113 150 75l85 38-85 38-85-38Z" fill="#173453"/>
+<path d="M95 132v43c34 28 76 28 110 0v-43" fill="none" stroke="#173453" stroke-width="13" stroke-linejoin="round"/>
+<path d="M235 115v63" stroke="#b89b57" stroke-width="9" stroke-linecap="round"/>
+<circle cx="235" cy="185" r="9" fill="#b89b57"/>
+<path d="M80 205c28-18 52-18 70-3 18-15 42-15 70 3v36c-28-16-52-16-70-1-18-15-42-15-70 1v-36Z" fill="#fff" stroke="#173453" stroke-width="8" stroke-linejoin="round"/>
+<path d="M150 202v38" stroke="#a5b9a2" stroke-width="7"/>
+</svg>

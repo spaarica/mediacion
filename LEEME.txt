@@ -1,0 +1,35 @@
+PORTAL CORPORATIVO — TIAYNA PACHA CONSULTORA SOCIAL
+====================================================
+
+ARCHIVOS
+- index.html: portal corporativo principal.
+- tesis.html: página del servicio de apoyo a proyectos de tesis.
+- salud.html: página de Área Salud en preparación.
+- styles.css: diseño responsive compartido.
+- script.js: menú móvil y año automático.
+- assets/: logos e imágenes.
+
+ENLACES CONFIGURADOS
+- Mediación Familiar y Peritaje Social:
+  https://spaarica.github.io/mediacion/
+- Tesis:
+  tesis.html
+- Área Salud:
+  salud.html
+
+PUBLICACIÓN EN GITHUB PAGES
+1. Cree un repositorio nuevo, por ejemplo: tiayna-pacha
+2. Suba TODO el contenido de esta carpeta, no el ZIP.
+3. Confirme que index.html quede en la raíz.
+4. Active Settings > Pages > Deploy from a branch > main > /(root).
+5. La dirección probable será:
+   https://spaarica.github.io/tiayna-pacha/
+
+IMPORTANTE
+- El Área Salud aparece como “en preparación”, porque no se entregaron todavía
+  servicios, profesionales responsables ni alcances específicos.
+- Cuando exista esa información, se puede reemplazar salud.html.
+- El portal usa el correo:
+  mediadorafamiliar.chile@outlook.com
+- El teléfono usado para consultas de tesis es:
+  +56 9 7386 7356
