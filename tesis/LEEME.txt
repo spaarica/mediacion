@@ -1,0 +1,35 @@
+WEB COMPLETA — APOYO A PROYECTOS DE TESIS
+=============================================
+
+ESTRUCTURA
+tesis/
+├── index.html
+├── styles.css
+├── script.js
+└── assets/
+    ├── logo-corporativo.webp
+    ├── logo-tesis.svg
+    └── favicon.svg
+
+PUBLICACIÓN EN GITHUB
+1. En el repositorio "mediacion", crea o abre la carpeta:
+   tesis
+2. Sube dentro de esa carpeta TODO el contenido de este ZIP.
+3. index.html debe quedar directamente dentro de tesis/.
+4. La dirección será:
+   https://spaarica.github.io/mediacion/tesis/
+
+CARACTERÍSTICAS
+- Web responsive.
+- Contenido desarrollado en HTML.
+- No depende del afiche para informar.
+- Incluye secciones sobre:
+  tema, problema, objetivos, marco teórico, metodología,
+  redacción, revisión, proceso de trabajo, modalidades,
+  perfil profesional, preguntas frecuentes y contacto.
+- Formulario que abre WhatsApp.
+- Mantiene la paleta azul marino, verde salvia, crema y dorado.
+
+IMPORTANTE
+El servicio se presenta como orientación y revisión académica.
+No se ofrece realizar la tesis en nombre del estudiante.
