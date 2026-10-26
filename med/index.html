@@ -2219,13 +2219,13 @@
 
             <div class="utm-current-box">
               <span class="utm-current-label">Valor utilizado</span>
-              <strong class="utm-current-value" id="utm-current-value">Cargando…</strong>
-              <small class="utm-current-date" id="utm-current-date">Consultando el valor actualizado</small>
+              <strong class="utm-current-value" id="utm-current-value">Verificando…</strong>
+              <small class="utm-current-date" id="utm-current-date">Preparando el valor del mes vigente</small>
             </div>
 
             <p class="utm-source">
-              Actualización automática mediante mindicador.cl.
-              <a href="https://www.sii.cl/valores_y_fechas/index_valores_y_fechas.html" target="_blank" rel="noopener noreferrer">Consultar valores oficiales del SII</a>.
+              Consulta automática mediante mindicador.cl. Si el servicio no responde, se utiliza como respaldo el valor mensual oficial del SII incorporado en esta página.
+              <a href="https://www.sii.cl/valores_y_fechas/utm/utm2026.htm" target="_blank" rel="noopener noreferrer">Consultar valores oficiales del SII</a>.
             </p>
           </article>
 
@@ -2445,8 +2445,26 @@
       "use strict";
 
       var API_URL = "https://mindicador.cl/api/utm";
-      var FALLBACK_VALUE = 71649;
-      var FALLBACK_DATE = "2026-08-01T04:00:00.000Z";
+      var SANTIAGO_TIME_ZONE = "America/Santiago";
+      var API_SLOW_NOTICE_MS = 4500;
+
+      /*
+       * Valores oficiales publicados por el SII para 2026.
+       * Se usan como respaldo si la consulta automática demora o falla.
+       */
+      var OFFICIAL_UTM_FALLBACKS = {
+        "2026-01": 69751,
+        "2026-02": 69611,
+        "2026-03": 69889,
+        "2026-04": 69889,
+        "2026-05": 70588,
+        "2026-06": 71506,
+        "2026-07": 71649,
+        "2026-08": 71649,
+        "2026-09": 71721,
+        "2026-10": 72151,
+        "2026-11": 72440
+      };
 
       var currentValueElement = document.getElementById("utm-current-value");
       var currentDateElement = document.getElementById("utm-current-date");
@@ -2464,6 +2482,8 @@
       var utmValue = null;
       var utmDate = null;
       var usingFallback = false;
+      var fallbackKey = null;
+      var apiFinished = false;
 
       var currencyFormatter = new Intl.NumberFormat("es-CL", {
         style: "currency",
@@ -2479,8 +2499,59 @@
       var monthFormatter = new Intl.DateTimeFormat("es-CL", {
         month: "long",
         year: "numeric",
-        timeZone: "America/Santiago"
+        timeZone: SANTIAGO_TIME_ZONE
       });
+
+      function getSantiagoYearMonth() {
+        var parts = new Intl.DateTimeFormat("en-CA", {
+          year: "numeric",
+          month: "2-digit",
+          timeZone: SANTIAGO_TIME_ZONE
+        }).formatToParts(new Date());
+
+        var year = "";
+        var month = "";
+
+        parts.forEach(function (part) {
+          if (part.type === "year") year = part.value;
+          if (part.type === "month") month = part.value;
+        });
+
+        return year + "-" + month;
+      }
+
+      function dateFromYearMonth(yearMonth) {
+        return new Date(yearMonth + "-15T12:00:00-03:00");
+      }
+
+      function getFallbackForCurrentMonth() {
+        var targetKey = getSantiagoYearMonth();
+
+        if (OFFICIAL_UTM_FALLBACKS[targetKey]) {
+          return {
+            key: targetKey,
+            value: OFFICIAL_UTM_FALLBACKS[targetKey],
+            exactMonth: true
+          };
+        }
+
+        var availableKeys = Object.keys(OFFICIAL_UTM_FALLBACKS)
+          .filter(function (key) {
+            return key <= targetKey;
+          })
+          .sort();
+
+        var allKeys = Object.keys(OFFICIAL_UTM_FALLBACKS).sort();
+        var selectedKey = availableKeys.length
+          ? availableKeys[availableKeys.length - 1]
+          : allKeys[0];
+
+        return {
+          key: selectedKey,
+          value: OFFICIAL_UTM_FALLBACKS[selectedKey],
+          exactMonth: selectedKey === targetKey
+        };
+      }
 
       function parseAmount(rawValue) {
         var normalized = String(rawValue || "").trim().replace(/\s+/g, "");
@@ -2500,17 +2571,20 @@
       }
 
       function showCurrentValue() {
-        currentValueElement.textContent = "1 UTM = " + currencyFormatter.format(utmValue);
+        currentValueElement.textContent =
+          "1 UTM = " + currencyFormatter.format(utmValue);
 
         var formattedDate = monthFormatter.format(new Date(utmDate));
+
         currentDateElement.textContent = usingFallback
-          ? "Valor de respaldo correspondiente a " + formattedDate
-          : "Último valor disponible: " + formattedDate;
+          ? "Valor oficial SII de respaldo: " + formattedDate
+          : "Valor del mes verificado automáticamente: " + formattedDate;
       }
 
-      function calculate() {
+      function calculate(updateStatus) {
         if (!utmValue) {
-          statusElement.textContent = "Aún se está obteniendo el valor de la UTM.";
+          statusElement.textContent =
+            "Aún se está obteniendo el valor de la UTM.";
           return;
         }
 
@@ -2518,7 +2592,8 @@
 
         if (!Number.isFinite(amount) || amount < 0) {
           resultValueElement.textContent = "—";
-          resultDetailElement.textContent = "Ingresa una cantidad válida y mayor o igual a cero.";
+          resultDetailElement.textContent =
+            "Ingresa una cantidad válida y mayor o igual a cero.";
           statusElement.textContent = "Revisa la cantidad ingresada.";
           statusElement.classList.add("is-error");
           return;
@@ -2527,31 +2602,86 @@
         statusElement.classList.remove("is-error");
 
         var result = amount * utmValue;
-        resultValueElement.textContent = currencyFormatter.format(result);
+
+        resultValueElement.textContent =
+          currencyFormatter.format(result);
+
         resultDetailElement.textContent =
           numberFormatter.format(amount) +
           " UTM × " +
           currencyFormatter.format(utmValue) +
           " por UTM";
 
-        statusElement.textContent = usingFallback
-          ? "Cálculo realizado con el valor de respaldo indicado."
-          : "Cálculo realizado con el último valor obtenido automáticamente.";
+        if (updateStatus !== false) {
+          statusElement.textContent = usingFallback
+            ? "Cálculo realizado con el valor oficial de respaldo del SII indicado en pantalla."
+            : "Cálculo realizado con el valor del mes verificado automáticamente.";
+        }
       }
 
-      function useFallback() {
-        utmValue = FALLBACK_VALUE;
-        utmDate = FALLBACK_DATE;
+      function applyFallback(initialLoad) {
+        var fallback = getFallbackForCurrentMonth();
+
+        fallbackKey = fallback.key;
+        utmValue = fallback.value;
+        utmDate = dateFromYearMonth(fallback.key).toISOString();
         usingFallback = true;
+
         showCurrentValue();
-        statusElement.textContent =
-          "No se pudo consultar el servicio en este momento. Se utiliza un valor de respaldo visible en pantalla.";
-        statusElement.classList.add("is-error");
-        calculate();
+        calculate(false);
+        statusElement.classList.remove("is-error");
+
+        if (initialLoad) {
+          statusElement.textContent = fallback.exactMonth
+            ? "Valor oficial del SII cargado. Verificando automáticamente la fuente en línea…"
+            : "Se muestra el último valor oficial de respaldo incorporado. Verificando automáticamente la fuente en línea…";
+        }
+      }
+
+      function findCurrentMonthInApi(data) {
+        if (!data || !Array.isArray(data.serie)) {
+          return null;
+        }
+
+        var targetKey = getSantiagoYearMonth();
+
+        for (var i = 0; i < data.serie.length; i += 1) {
+          var item = data.serie[i];
+
+          if (!item || !item.fecha || !item.valor) {
+            continue;
+          }
+
+          var itemKey = String(item.fecha).slice(0, 7);
+
+          if (itemKey === targetKey) {
+            return item;
+          }
+        }
+
+        return null;
       }
 
       function loadUtm() {
-        fetch(API_URL, { cache: "no-store" })
+        /*
+         * Primero se muestra el valor oficial SII del mes incorporado
+         * y luego se verifica mindicador.cl en segundo plano.
+         */
+        applyFallback(true);
+
+        var slowNoticeTimer = window.setTimeout(function () {
+          if (!apiFinished && usingFallback) {
+            statusElement.textContent =
+              "La consulta automática está demorando. Se mantiene el valor oficial del SII mostrado en pantalla.";
+          }
+        }, API_SLOW_NOTICE_MS);
+
+        fetch(API_URL, {
+          cache: "no-store",
+          headers: {
+            "Accept": "application/json"
+          }
+        })
           .then(function (response) {
             if (!response.ok) {
               throw new Error("Respuesta no válida");
@@ -2559,41 +2689,74 @@
             return response.json();
           })
           .then(function (data) {
-            if (!data || !data.serie || !data.serie.length || !data.serie[0].valor) {
-              throw new Error("Datos incompletos");
+            var currentMonthItem = findCurrentMonthInApi(data);
+
+            if (!currentMonthItem) {
+              throw new Error(
+                "La API no entregó el mes vigente"
+              );
             }
 
-            utmValue = Number(data.serie[0].valor);
-            utmDate = data.serie[0].fecha;
+            var apiValue = Number(currentMonthItem.valor);
+
+            if (!Number.isFinite(apiValue) || apiValue <= 0) {
+              throw new Error("Valor UTM inválido");
+            }
+
+            utmValue = apiValue;
+            utmDate = currentMonthItem.fecha;
             usingFallback = false;
 
             showCurrentValue();
+            calculate(false);
+
             statusElement.classList.remove("is-error");
-            statusElement.textContent = "Valor actualizado correctamente.";
-            calculate();
+            statusElement.textContent =
+              "Valor correspondiente al mes vigente verificado automáticamente.";
           })
-          .catch(useFallback);
+          .catch(function () {
+            /*
+             * La calculadora no queda bloqueada:
+             * continúa utilizando el respaldo oficial visible.
+             */
+            statusElement.classList.remove("is-error");
+
+            var fallbackMonth =
+              monthFormatter.format(dateFromYearMonth(fallbackKey));
+
+            statusElement.textContent =
+              "No fue posible verificar mindicador.cl en este momento. Se mantiene el valor oficial del SII de " +
+              fallbackMonth +
+              ".";
+          })
+          .then(function () {
+            apiFinished = true;
+            window.clearTimeout(slowNoticeTimer);
+          });
       }
 
-      calculateButton.addEventListener("click", calculate);
+      calculateButton.addEventListener("click", function () {
+        calculate(true);
+      });
 
       amountInput.addEventListener("keydown", function (event) {
         if (event.key === "Enter") {
           event.preventDefault();
-          calculate();
+          calculate(true);
         }
       });
 
       amountInput.addEventListener("input", function () {
         if (utmValue) {
-          calculate();
+          calculate(false);
         }
       });
 
       Array.prototype.forEach.call(shortcutButtons, function (button) {
         button.addEventListener("click", function () {
-          amountInput.value = button.getAttribute("data-utm-amount") || "1";
-          calculate();
+          amountInput.value =
+            button.getAttribute("data-utm-amount") || "1";
+          calculate(true);
         });
       });
 
